@@ -1,0 +1,104 @@
+<html>
+<head>
+  <link rel="stylesheet" media="all" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
+  <script src="upload.js"></script>
+  <title>Describe objects and relations (browser demo)</title>
+</head>
+<body>
+  <section id="loading_page" class="page">
+    <h1>Describe objects and relations</h1>
+    <div id="status"></div>
+    <div style="display: table; width: 100%; margin: auto; padding: 15px">
+      <p style="text-align: left;">
+        This is an online demo to generate image descrptions about objects and relations.
+        In order to describe objects and relations you need to select a picture
+        and point at two objects in it.
+        The generated word sequence describes
+        <span style="color: red">object1</span>
+        in relation with
+        <span style="color: blue">object2</span>.
+      </p>
+      <br />
+      <p style="text-align: left;">
+        1. Choose a photo.<br />
+        2. Draw bounding box for <span style="color: red">object1</span>.<br />
+        3. Draw bounding box for <span style="color: blue">object2</span>.<br />
+        4. Click on <em>Generate</em> button.<br />
+      </p>
+      <p style="text-align: left;">
+        This online demo is powered by Tensorflowjs.
+      </p>
+    </div>
+  </section>
+
+  <section id="upload_page" class="page">
+    <div id="userImage">
+      <p>Drag &amp; Drop Image</p>
+      <input type="file" id="fileUpload" />
+    </div>
+  </section>
+
+  <section id="select_page" class="page">
+    <div style="display: none; width:226px; position: absolute; left:0px; top:70px;">
+      <canvas id="canvas" width="224"></canvas>
+      <div style="display: none;"><canvas id="canvas0" width="224"  height="224"></canvas></div>
+    </div>
+    <div style="display: none; width:234px; height:464px; position: absolute; left:246px; top:0px;">
+      <div id="object1" style="display: none;">
+        <canvas id="canvas1" width="224" height="224"></canvas>
+      </div>
+      <div id="object2" style="display: none;">
+        <canvas id="canvas2" width="224" height="224"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <section id="result_page" class="page">
+    <div style="width:226px; position: absolute; left:0px; top:0px;">
+      <canvas id="canvasx"></canvas>
+    </div>
+    <div style="width:244px; position: absolute; left:236px; top:0px; font-size:8pt">
+      <div id="predictions">Processing ...</div>
+    </div>
+  </section>
+
+  <div id="pagination" class="pagination">
+    <button type="button" id="goto_select_btn" class="next_page_btn">Next</button>
+    <button type="button" id="goto_upload_btn" class="next_page_btn">Start</button>
+    <button type="button" id="generate_btn" class="next_page_btn">Generate</button>
+  </div>
+
+  <script type="module" src="index.js"></script>
+  <script>
+    const pages = [
+      "loading_page",
+      "upload_page",
+      "select_page",
+      "result_page",
+    ];
+    var curr_page = 0;
+    function next_page() {
+      if (curr_page + 1 < pages.length) {
+        curr_page += 1;
+        pages.forEach((page_el, page_num) => {
+          if (page_num == curr_page) {
+            $(page_el).el.style.display = "block";
+          } else {
+            $(page_el).el.style.display = "none";
+          }
+        });
+        for (let i=0; i < $("pagination").el.children.length ; i++) {
+          $("pagination").el.children[i].style.display = "none";
+        };
+      } else {
+        // ignore nonsense
+      }
+    }
+    function reset_page() {
+      curr_page = -1;
+      next_page();
+    }
+  </script>
+</body>
+</html>
