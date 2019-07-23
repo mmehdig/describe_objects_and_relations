@@ -7,6 +7,9 @@ html, body {
 	height: 100%;
 	overflow: hidden;
 }
+h3 {
+	margin: 10px 0;
+}
 .error{ color: #B71C1C; }
 #canvas {
     cursor: crosshair;
