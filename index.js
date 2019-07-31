@@ -1,5 +1,6 @@
 /**
- * @license
+ * This file is modified heavily from a source code of the tutorial on tensorflow.js
+ * The original license was as following:
  * Copyright 2018 Google LLC. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
