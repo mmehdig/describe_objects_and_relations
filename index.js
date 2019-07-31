@@ -369,8 +369,9 @@ function showResults(att_results) {
         el_pbarx.style.height = 20;
         el_pbarx.style.background = color_list[j-1];
         el_pbarx.style.color = "white";
-        el_pbarx.style.display = "table-cell";
+        el_pbarx.style.display = "inline-block";
         el_pbarx.style["text-align"] = "center";
+        el_pbarx.style["overflow"] = "hidden";
         el_pbarx.style["vertical-align"] = "middle";
         el_pbar.appendChild(el_pbarx);
       }
