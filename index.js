@@ -356,14 +356,14 @@ function showResults(att_results) {
       el_text.style.height = 20;
       el_text.style.display = "inline-block";
       el_text.style.background = "white";
-      el_text.style["vertical-align"] = "middle";
+      //el_text.style["vertical-align"] = "middle";
       el_text.style["font-size"] = "10pt";
 
-      el_pbar.style.width = 118;
-      el_pbar.style.height = 16;
+      el_pbar.style.width = 119;
+      el_pbar.style.height = 18;
       el_pbar.style.display = "inline-block";
       el_pbar.style.overflow = "hidden";
-      el_pbar.style["border-radius"] = "15px";
+      el_pbar.style["border-radius"] = "18px";
 
       for (let j = 1; j < 5; j++){
         let el_pbarx = document.createElement('div');
