@@ -363,7 +363,7 @@ function showResults(att_results) {
       el_pbar.style.height = 16;
       el_pbar.style.display = "inline-block";
       el_pbar.style.overflow = "hidden";
-      el_pbar.style["border-radius"] = "15px!important";
+      el_pbar.style["border-radius"] = "15px";
 
       for (let j = 1; j < 5; j++){
         let el_pbarx = document.createElement('div');
