@@ -11,10 +11,8 @@
     <div id="status"></div>
     <div style="display: table; width: 100%; margin: auto; padding: 15px">
       <p style="text-align: left;">
-        This is a web based demo for automatic generation of image descrptions with neural language models. 
-        The idea is to describe objects and relation between them. 
-        In order to describe two objects in a picture, first you need to draw bounding boxes around them.
-        The generated word sequences are supposed to be possible descriptions about
+        This is a browser based demo for automatically generating descrptions for objects and their relations using neural language models. 
+        You need to choose the picture and two objects, then system will generate word sequences based on 
         <span style="color: red">object1</span>
         in relation with 
         <span style="color: blue">object2</span>.
@@ -24,14 +22,6 @@
       <p style="text-align: left;">
         You need Google Chrome browser to be able to run the demo.
         The models are around 60 MB. 
-      </p>
-      </p>
-      <h3>Models</h3>
-      <p style="text-align: left;">
-        The models are built in <a href="https://keras.io/">Keras</a> then ported for <a href="https://js.tensorflow.org/">Tensorflow.js</a>. 
-        The training of the language model was done 1.5M examples from <a href="http://visualgenome.org">VisualGenome relatinoships dataset</a> in only 5 epochs and batches of 80.
-        For convenience of this demo, the module for extracting visual features is based on <a href="https://keras.io/applications/#mobilenetv2">this pretrained mobilenet</a>.
-        Other than convolutional visual features, the arrangement of two bouning box are encoded as an additional set of <span style="color: green">spatial features</span>.
       </p>
     </div>
   </section>
@@ -76,10 +66,22 @@
     </div>
   </section>
 
+  <section id="about_page" class="page">
+      <h3>About the demo</h3>
+      <p style="text-align: left;">
+        The model is built in <a href="https://keras.io/">Keras</a> then ported for <a href="https://js.tensorflow.org/">Tensorflow.js</a>. 
+        The conditional neural language model is trained on 100K images from <a href="http://visualgenome.org">VisualGenome's relatinoships dataset</a> 
+        with around 15 descrptions per image.
+        For convenience of this online demo, we used <a href="https://keras.io/applications/#mobilenetv2">a pretrained mobilenet</a> to extract visual features.
+        In addition to convolutional features, the bouning box arrangements are encoded as a <span style="color: green">vector of spatial features</span>.
+      </p>
+  </section>
+  
   <div id="pagination" class="pagination">
     <button type="button" id="goto_select_btn" class="next_page_btn">Next</button>
     <button type="button" id="goto_upload_btn" class="next_page_btn">Start</button>
     <button type="button" id="generate_btn" class="next_page_btn">Generate</button>
+    <button type="button" id="reset_btn" class="next_page_btn">Restart</button>
   </div>
 
   <script type="module" src="index.js"></script>
@@ -89,7 +91,9 @@
       "upload_page",
       "select_page",
       "result_page",
+      "about_page",
     ];
+    $("pagination")
     var curr_page = 0;
     function next_page() {
       if (curr_page + 1 < pages.length) {
@@ -105,6 +109,7 @@
           $("pagination").el.children[i].style.display = "none";
         };
       } else {
+        reset_page();
         // ignore nonsense
       }
     }
