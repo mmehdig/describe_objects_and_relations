@@ -30,10 +30,11 @@ h3 {
 }
 .pagination {
 	position: absolute;
-	height: 75px;
+	height: 60px;
 	width: 400px;
 	bottom: 0px;
 	left: 0px;
+	padding: 20px 20px 0 20px;
 }
 #goto_upload_btn, #goto_select_btn, #generate_btn, #goto_about_btn, #back_btn {
 	display: none;
