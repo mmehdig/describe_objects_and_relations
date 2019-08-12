@@ -24,8 +24,7 @@ function image_processing(_file) {
 		clearConvas('canvas2');
 		objsConvas = [$('canvas1').el, $('canvas2').el];
 		
-		let ctx = $('canvas').el.getContext('2d');
-		ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, dw, dh);
+		refreshConvas(image, objs);
 
 		//Variables
 		let canvasx = $('canvas').el.getBoundingClientRect().left;
@@ -72,15 +71,16 @@ function image_processing(_file) {
 			mousex = parseInt(e.clientX-canvasx);
 			mousey = parseInt(e.clientY-canvasy);
 			if(mousedown) {
-					ctx.clearRect(0,0,canvas.width,canvas.height); //clear canvas
-					ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, dw, dh);
-					ctx.beginPath();
-					let width = mousex-last_mousex;
-					let height = mousey-last_mousey;
-					ctx.rect(last_mousex,last_mousey,width,height);
-					ctx.strokeStyle = 'black';
-					ctx.lineWidth = 10;
-					ctx.stroke();
+				let ctx = $('canvas').el.getContext('2d');
+				ctx.clearRect(0,0,canvas.width,canvas.height); //clear canvas
+				ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, dw, dh);
+				ctx.beginPath();
+				let width = mousex-last_mousex;
+				let height = mousey-last_mousey;
+				ctx.rect(last_mousex,last_mousey,width,height);
+				ctx.strokeStyle = 'black';
+				ctx.lineWidth = 10;
+				ctx.stroke();
 			}
 		}, false);
 	}
