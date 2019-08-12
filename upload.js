@@ -126,14 +126,10 @@ var dragdrop = {
 **/
 function runUpload( file ) {
 	// http://stackoverflow.com/questions/12570834/how-to-preview-image-get-file-size-image-height-and-width-before-upload
-	if ( file.type === 'image/png' ||
-	     file.type === 'image/jpg' ||
-	     file.type === 'image/jpeg' ||
-	     file.type === 'image/gif' ||
-	     file.type === 'image/bmp' ){
+	if ( file.type === 'image/png' || file.type === 'image/jpg' || file.type === 'image/jpeg' || file.type === 'image/gif' file.type === 'image/bmp' ){
 		var reader = new FileReader();
 		reader.readAsDataURL( file );
-		reader.onload = image_processing; // END reader.onload()
+		reader.onload = image_processing; 
 	} // END test if file.type === image
 }
 
@@ -154,10 +150,15 @@ function refreshConvas(image, objs, objsConvas, target='canvas', ) {
 	ctx.clearRect(0,0,$(target).el.width,$(target).el.height); //clear canvas
 	ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, dw, dh);
 	objs.forEach(function(bbox, index) {
-	  let x = bbox[0], y = bbox[1], w = bbox[2], h = bbox[3];
+		let x = bbox[0], y = bbox[1], w = bbox[2], h = bbox[3];
+		let octx = objsConvas[index].getContext('2d')
+		objsConvas[index].width = IMG_SIZE;
+		objsConvas[index].height = IMG_SIZE;
 		objsConvas[index].parentElement.style.display = "block";
 		objsConvas[index].parentElement.parentElement.style.display = "block";
-		objsConvas[index].getContext('2d').drawImage(image, x * ratio, y * ratio, w * ratio, h * ratio, 0, 0, objsConvas[index].width, objsConvas[index].height);
+		octx.clearRect(0,0,objsConvas[index].width,objsConvas[index].height); //clear canvas
+		octx.drawImage(image, x * ratio, y * ratio, w * ratio, h * ratio, 0, 0, objsConvas[index].width, objsConvas[index].height);
+		
 		ctx.beginPath();
 		ctx.rect(x,y,w,h);
 		ctx.strokeStyle = colors[index];
