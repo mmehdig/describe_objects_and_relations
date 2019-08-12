@@ -29,9 +29,6 @@ const IMAGE_SIZE = 224;
 const TOPK_PREDICTIONS = 10;
 
 let mobilenet, lm, lm_top;
-let xxx;
-
-
 
 const mobilenetDemo = async () => {
   status('Loading model...');
@@ -385,6 +382,7 @@ function showResults(att_results) {
       $('predictions').el.appendChild(el)
     });
   });
+  document.getElementById('reset_btn').style.display = "block";
 }
 
 mobilenetDemo();
