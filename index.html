@@ -11,12 +11,12 @@
     <div id="status"></div>
     <div style="display: table; width: 100%; margin: auto; padding: 15px">
       <p style="text-align: left;">
-        This is an online demo to generate image descrptions about objects and relations.
-        In order to describe objects and relations you need to select a picture
-        and point at two objects in it.
-        The generated word sequence describes
+        This is a web based demo for automatic generation of image descrptions with neural language models. 
+        The idea is to describe objects and relation between them. 
+        In order to describe two objects in a picture, first you need to draw bounding boxes around them.
+        The generated word sequences are supposed to be possible descriptions about
         <span style="color: red">object1</span>
-        in relation with
+        in relation with 
         <span style="color: blue">object2</span>.
       </p>
       <br />
@@ -25,7 +25,8 @@
         1. Choose a photo.<br />
         2. Draw bounding box for <span style="color: red">object1</span>.<br />
         3. Draw bounding box for <span style="color: blue">object2</span>.<br />
-        4. Click on <em>Generate</em> button.<br />
+        4. Repeat 2 and 3 until you are happy with bounding boxes.
+        5. Click on <em>Generate</em> button.<br />
       </p>
       <h3>Requirements</h3>
       <p style="text-align: left;">
@@ -36,8 +37,9 @@
       <h3>Models</h3>
       <p style="text-align: left;">
         The models are built in <a href="https://keras.io/">Keras</a> then ported for <a href="https://js.tensorflow.org/">Tensorflow.js</a>. 
-        The trained was done 1.5M examples from <a href="http://visualgenome.org">VisualGenome</a> relatinoships dataset in 5 epochs in batches of 80.
+        The training of the language model was done 1.5M examples from <a href="http://visualgenome.org">VisualGenome relatinoships dataset</a> in only 5 epochs and batches of 80.
         For convenience of this demo, the module for extracting visual features is based on <a href="https://keras.io/applications/#mobilenetv2">this pretrained mobilenet</a>.
+        Other than convolutional visual features, the arrangement of two bouning box are encoded as an additional set of <span style="color: green">spatial features</span>.
       </p>
     </div>
   </section>
