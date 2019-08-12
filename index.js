@@ -55,7 +55,7 @@ const mobilenetDemo = async () => {
   const totalTime1 = performance.now() - startTime1;
 
   status(`Model loaded in ${Math.floor(totalTime1)} ms`);
-  document.getElementById('goto_upload_btn').style.display = "block";
+  document.getElementById('goto_upload_btn').style.display = "inline-block";
 };
 
 /**
@@ -382,7 +382,7 @@ function showResults(att_results) {
       $('predictions').el.appendChild(el)
     });
   });
-  document.getElementById('reset_btn').style.display = "block";
+  document.getElementById('goto_about_btn').style.display = "inline-block";
 }
 
 mobilenetDemo();
