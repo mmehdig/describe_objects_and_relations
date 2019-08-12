@@ -18,10 +18,12 @@ function image_processing(_file) {
 		// reset the size of the
 		$('canvas').el.width = dw;
 		$('canvas').el.height = dh;
-		objsConvas = [$('canvas1').el, $('canvas2').el];
+		
+		objs = [];
 		clearConvas(target='canvas1');
 		clearConvas(target='canvas2');
-
+		objsConvas = [$('canvas1').el, $('canvas2').el];
+		
 		let ctx = $('canvas').el.getContext('2d');
 		ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, dw, dh);
 
@@ -58,7 +60,7 @@ function image_processing(_file) {
 			mousedown = false;
 			refreshConvas(image, objs);
 			if (objs.length == 2) {
-				$('generate_btn').el.style.display = "inlinr-block";
+				$('generate_btn').el.style.display = "inline-block";
 				let ctx0 = $('canvas0').el.getContext('2d');
 				ctx0.drawImage(image, 0, 0, image.width, image.height, 0, 0, IMG_SIZE, IMG_SIZE);
 				refreshConvas(image, objs, 'canvas-copy');
