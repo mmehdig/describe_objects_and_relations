@@ -20,8 +20,8 @@ function image_processing(_file) {
 		$('canvas').el.height = dh;
 		
 		objs = [];
-		clearConvas(target='canvas1');
-		clearConvas(target='canvas2');
+		clearConvas('canvas1');
+		clearConvas('canvas2');
 		objsConvas = [$('canvas1').el, $('canvas2').el];
 		
 		let ctx = $('canvas').el.getContext('2d');
