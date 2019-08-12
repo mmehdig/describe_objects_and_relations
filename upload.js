@@ -15,11 +15,12 @@ function image_processing(_file) {
 		let ratio = IMG_SIZE / image.width; // Math.min(image.width, image.height);
 		dw = image.width * ratio;
 		dh = image.height * ratio;
-
 		// reset the size of the
 		$('canvas').el.width = dw;
 		$('canvas').el.height = dh;
 		objsConvas = [$('canvas1').el, $('canvas2').el];
+		clearConvas(target='canvas1');
+		clearConvas(target='canvas2');
 
 		let ctx = $('canvas').el.getContext('2d');
 		ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, dw, dh);
