@@ -9,24 +9,31 @@ let IMG_SIZE = 224;
 function image_processing(_file) {
 	image.src = _file.target.result;
 	image.onload = function() {
+		// clear the object selection page
+		$('generate_btn').el.style.display = "none";
+		objs = [];
+		clearConvas('canvas');
+		clearConvas('canvas1');
+		clearConvas('canvas2');
+		objsConvas = [$('canvas1').el, $('canvas2').el];
+		objsConvas.forEach(function(el){
+			 el.parentElement.style.display = "none";
+		})
+		
+		// go to the object selection page
 		next_page();
 		$('canvas').el.parentElement.style.display = "block";
 
 		let ratio = IMG_SIZE / image.width; // Math.min(image.width, image.height);
 		dw = image.width * ratio;
 		dh = image.height * ratio;
-		// reset the size of the
+		
+		// reset the size of the main canvas and refresh the image
 		$('canvas').el.width = dw;
 		$('canvas').el.height = dh;
+		refreshConvas(image, objs, objsConvas);
 		
-		objs = [];
-		clearConvas('canvas1');
-		clearConvas('canvas2');
-		objsConvas = [$('canvas1').el, $('canvas2').el];
-		
-		refreshConvas(image, objs);
-
-		//Variables
+		// set variables for track mouse moves:
 		let canvasx = $('canvas').el.getBoundingClientRect().left;
 		let canvasy = $('canvas').el.getBoundingClientRect().top;
 		let last_mousex = 0;
@@ -57,12 +64,13 @@ function image_processing(_file) {
 			objs.push([last_mousex,last_mousey,width,height]);
 			//Variables
 			mousedown = false;
-			refreshConvas(image, objs);
+			refreshConvas(image, objs, objsConvas);
 			if (objs.length == 2) {
 				$('generate_btn').el.style.display = "inline-block";
 				let ctx0 = $('canvas0').el.getContext('2d');
+				ctx0.clearRect(0,0,$('canvas0').el.width,$('canvas0').el.height);
 				ctx0.drawImage(image, 0, 0, image.width, image.height, 0, 0, IMG_SIZE, IMG_SIZE);
-				refreshConvas(image, objs, 'canvas-copy');
+				refreshConvas(image, objs, [$('canvas-copy1').el, $('canvas-copy2').el], 'canvas-copy');
 			}
 		}, false);
 
@@ -137,7 +145,7 @@ function clearConvas(target='canvas') {
 	ctx.clearRect(0,0,$(target).el.width,$(target).el.height); //clear canvas	
 }
 
-function refreshConvas(image, bboxes, target='canvas') {
+function refreshConvas(image, objs, objsConvas, target='canvas', ) {
 	let ctx = $(target).el.getContext('2d');
 	// reset the size of the
 	$(target).el.width = dw;
