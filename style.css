@@ -31,11 +31,11 @@ h3 {
 .pagination {
 	position: absolute;
 	height: 75px;
-	width: 200px;
+	width: 400px;
 	bottom: 0px;
 	left: 0px;
 }
-#goto_upload_btn, #goto_select_btn, #generate_btn, #reset_btn {
+#goto_upload_btn, #goto_select_btn, #generate_btn, #goto_about_btn {
 	display: none;
 }
 .page#loading_page {
@@ -86,7 +86,7 @@ button {
   cursor: pointer;
 
 /* Just for presentation */
-  display: block;
+  display: inline-block;
   margin: 0 auto;
   margin-bottom: 20px;
 }
