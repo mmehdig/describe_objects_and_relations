@@ -6,7 +6,7 @@ let objsConvas = [];
 let colors = ['red', 'blue'];
 let IMG_SIZE = 224;
 
-// This code is highly inflienced from:
+// This code is highly influenced from:
 // 1. https://codepen.io/doughensel/pen/zGMmop
 // 2. https://jsfiddle.net/richardcwc/ukqhf54k/
 //
@@ -127,7 +127,7 @@ function runUpload( file ) {
 					mousedown = false;
 					refreshConvas(image, objs);
 					if (objs.length == 2) {
-						$('generate_btn').el.style.display = "block";
+						$('generate_btn').el.style.display = "inlinr-block";
 						let ctx0 = $('canvas0').el.getContext('2d');
 						ctx0.drawImage(image, 0, 0, image.width, image.height, 0, 0, IMG_SIZE, IMG_SIZE);
 						refreshConvas(image, objs, 'canvasx');
@@ -173,8 +173,13 @@ window.onload = function(){
 		});
 		// Pagination
 		let nextButtons = document.getElementsByClassName('next_page_btn');
+		let backButtons = document.getElementsByClassName('back_page_btn');
 		for(let i = 0; i < nextButtons.length; i++) {
 			nextButtons[i].addEventListener('click', next_page );
+		};
+
+		for(let i = 0; i < backButtons.length; i++) {
+			backButtons[i].addEventListener('click', prev_page );
 		};
 
 	} else {
