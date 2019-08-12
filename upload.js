@@ -126,6 +126,14 @@ function runUpload( file ) {
 	} // END test if file.type === image
 }
 
+function clearConvas(target='canvas') {
+	let ctx = $(target).el.getContext('2d');
+	// reset the size of the
+	$(target).el.width = dw;
+	$(target).el.height = dh;
+	ctx.clearRect(0,0,$(target).el.width,$(target).el.height); //clear canvas	
+}
+
 function refreshConvas(image, bboxes, target='canvas') {
 	let ctx = $(target).el.getContext('2d');
 	// reset the size of the
