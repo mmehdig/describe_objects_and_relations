@@ -19,7 +19,7 @@ function image_processing(_file) {
 		// reset the size of the
 		$('canvas').el.width = dw;
 		$('canvas').el.height = dh;
-		let objsConvas = [$('canvas1').el, $('canvas2').el];
+		objsConvas = [$('canvas1').el, $('canvas2').el];
 
 		let ctx = $('canvas').el.getContext('2d');
 		ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, dw, dh);
