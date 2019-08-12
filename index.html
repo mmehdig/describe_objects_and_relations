@@ -61,6 +61,12 @@
     <div style="width:226px; position: absolute; left:0px; top:0px;">
       <canvas id="canvasx"></canvas>
     </div>
+    <div style="width:226px; position: absolute; left:0px; top:0px;">
+      <canvas id="canvasx1"></canvas>
+    </div>
+    <div style="width:226px; position: absolute; left:0px; top:0px;">
+      <canvas id="canvasx2"></canvas>
+    </div>
     <div style="width:244px; position: absolute; left:236px; top:0px; font-size:8pt">
       <div id="predictions">Processing ...</div>
     </div>
@@ -81,7 +87,9 @@
     <button type="button" id="goto_select_btn" class="next_page_btn">Next</button>
     <button type="button" id="goto_upload_btn" class="next_page_btn">Start</button>
     <button type="button" id="generate_btn" class="next_page_btn">Generate</button>
-    <button type="button" id="reset_btn" class="next_page_btn">Restart</button>
+    <button type="button" id="goto_about_btn" class="next_page_btn site">About</button>
+    <button type="button" id="reset_btn" class="next_page_btn site">Restart</button>
+    <button type="button" id="back_btn" class="next_page_btn back">Back</button>
   </div>
 
   <script type="module" src="index.js"></script>
@@ -93,7 +101,7 @@
       "result_page",
       "about_page",
     ];
-    $("pagination")
+    
     var curr_page = 0;
     function next_page() {
       if (curr_page + 1 < pages.length) {
@@ -110,6 +118,23 @@
         };
       } else {
         reset_page();
+        // ignore nonsense
+      }
+    }
+    function prev_page() {
+      if (curr_page - 1 > 0) {
+        curr_page -= 1;
+        pages.forEach((page_el, page_num) => {
+          if (page_num == curr_page) {
+            $(page_el).el.style.display = "block";
+          } else {
+            $(page_el).el.style.display = "none";
+          }
+        });
+        for (let i=0; i < $("pagination").el.children.length ; i++) {
+          $("pagination").el.children[i].style.display = "none";
+        };
+      } else {
         // ignore nonsense
       }
     }
