@@ -1,4 +1,5 @@
-This is an online demo for generating image descriptions. 
-(nor description or report yet)
+In order to open the demo, go to: 
+[https://mehdi.ghanimifard.com/apl-esslli-19-material/demo.html](https://mehdi.ghanimifard.com/apl-esslli-19-material/demo.html)
 
-[demo](https://mehdi.ghanimifard.com/describe_objects_and_relations/)
+Other materials can be found here:
+[https://github.com/mmehdig/apl-esslli-19-material/](https://github.com/mmehdig/apl-esslli-19-material/)
