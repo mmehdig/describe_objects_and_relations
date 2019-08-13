@@ -15,36 +15,34 @@ let mousex = 0;
 let mousey = 0;
 let mousedown = false;
 
-function display_image(_file) {
-	image.src = _file.target.result;
-	image.onload = function() {
-		// clear the object selection page
-		$('generate_btn').el.style.display = "none";
-		objs = [];
-		clearConvas('canvas');
-		clearConvas('canvas1');
-		clearConvas('canvas2');
-		objsConvas = [$('canvas1').el, $('canvas2').el];
-		objsConvas.forEach(function(el){
-			 el.parentElement.style.display = "none";
-		})
-		
-		// go to the object selection page
-		next_page();
-		$('canvas').el.parentElement.style.display = "block";
 
-		let ratio = IMG_SIZE / image.width; // Math.min(image.width, image.height);
-		dw = image.width * ratio;
-		dh = image.height * ratio;
-		
-		// reset the size of the main canvas and refresh the image
-		$('canvas').el.width = dw;
-		$('canvas').el.height = dh;
-		refreshConvas(image, objs, objsConvas);
-		
-		canvasx = $('canvas').el.getBoundingClientRect().left;
-		canvasy = $('canvas').el.getBoundingClientRect().top;
-	}
+image.onload = function() {
+	// clear the object selection page
+	$('generate_btn').el.style.display = "none";
+	objs = [];
+	clearConvas('canvas');
+	clearConvas('canvas1');
+	clearConvas('canvas2');
+	objsConvas = [$('canvas1').el, $('canvas2').el];
+	objsConvas.forEach(function(el){
+		 el.parentElement.style.display = "none";
+	})
+
+	// go to the object selection page
+	next_page();
+	$('canvas').el.parentElement.style.display = "block";
+
+	let ratio = IMG_SIZE / image.width; // Math.min(image.width, image.height);
+	dw = image.width * ratio;
+	dh = image.height * ratio;
+
+	// reset the size of the main canvas and refresh the image
+	$('canvas').el.width = dw;
+	$('canvas').el.height = dh;
+	refreshConvas(image, objs, objsConvas);
+
+	canvasx = $('canvas').el.getBoundingClientRect().left;
+	canvasy = $('canvas').el.getBoundingClientRect().top;
 }
 
 function clearConvas(target='canvas') {
