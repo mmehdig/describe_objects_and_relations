@@ -210,6 +210,7 @@ async function predict(imgElements, sf) {
 }
 
 function generate_description(e) {
+  $("predictions").el.innerHTML = "Processing ..."
   // VisKE: geometric relation between two bounding boxes:
   // spatial features
   // based on VisKE
