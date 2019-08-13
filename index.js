@@ -361,7 +361,7 @@ function showResults(att_results) {
       //el_text.style["vertical-align"] = "middle";
       el_text.style["font-size"] = "10pt";
       el_text.style["vertical-align"] = "top";
-      el_text.style["line-height"] = 20;
+      el_text.style["line-height"] = "20px";
 
       el_pbar.style.width = 219;
       el_pbar.style.height = 15;
