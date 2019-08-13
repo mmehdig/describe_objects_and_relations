@@ -55,7 +55,7 @@ function clearConvas(target='canvas') {
 	ctx.clearRect(0,0,$(target).el.width,$(target).el.height); //clear canvas	
 }
 
-function refreshConvas(image, objs, objsConvas, target='canvas', ) {
+function refreshConvas(image, objs, objsConvas, target='canvas', obj_size=IMG_SIZE) {
 	let ctx = $(target).el.getContext('2d');
 	// reset the size of the
 	$(target).el.width = dw;
@@ -66,8 +66,8 @@ function refreshConvas(image, objs, objsConvas, target='canvas', ) {
 	objs.forEach(function(bbox, index) {
 		let x = bbox[0], y = bbox[1], w = bbox[2], h = bbox[3];
 		let octx = objsConvas[index].getContext('2d')
-		objsConvas[index].width = IMG_SIZE;
-		objsConvas[index].height = IMG_SIZE;
+		objsConvas[index].width = obj_size;
+		objsConvas[index].height = obj_size;
 		objsConvas[index].parentElement.style.display = "block";
 		objsConvas[index].parentElement.parentElement.style.display = "block";
 		octx.clearRect(0,0,objsConvas[index].width,objsConvas[index].height); //clear canvas
