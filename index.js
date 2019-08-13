@@ -380,7 +380,8 @@ function showResults(att_results) {
       el_pbar.style.display = "inline-block";
       el_pbar.style.overflow = "hidden";
       el_pbar.style["border-radius"] = "18px";
-
+      el_pbar.style["margine"] = "2px 0 0";
+      
       for (let j = 1; j < 5; j++){
         let el_pbarx = document.createElement('div');
         el_pbarx.innerHTML = parseInt(w[j] * 100) + "%";
