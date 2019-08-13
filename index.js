@@ -182,7 +182,7 @@ async function predict(imgElements, sf) {
       });
       const beta = model_predict_fn(item[1], true).arraySync()[0];
       for (let i=1; i<item[1].length; i++) {
-        if (item[1][i] == 0) {
+        if ((item[1][i] == 0) || (item[1][i] == 1)) {
           break;
         } else {
           results[index]['seq'].push([IX2WORD[item[1][i]]].concat(beta[i-1]));
@@ -194,11 +194,12 @@ async function predict(imgElements, sf) {
     let _results = [];
     let _keys = [];    
     results.forEach((item) => {
-      let k = item['seq'].map((x) => x[0]).join(" ");
+      let k = item['seq'].map((x) => x[0]).join(" ").trim();
       if (_keys.includes(k)) {
         return
       } else {
         _results.push(item);
+        _results.push(k)
       }
     });
     
