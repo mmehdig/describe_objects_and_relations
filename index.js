@@ -174,7 +174,7 @@ async function predict(imgElements, sf) {
 
     };
     let results = [];
-    const out = search(model_predict_fn, 5);
+    const out = search(model_predict_fn, 8);
     out.forEach(function(item, index) {
       results.push({
         'logprob': item[0],
@@ -190,8 +190,20 @@ async function predict(imgElements, sf) {
       }
     });
 
+    // remove repetitions
+    let _results = [];
+    let _keys = [];    
+    results.forEach((item) => {
+      let k = item['seq'].map((x) => x[0]).join(" ");
+      if (_keys.includes(k)) {
+        return
+      } else {
+        _results.push(item);
+      }
+    });
+    
     startTime4 = performance.now();
-    return results;
+    return _results;
   });
 
   // Convert logits to probabilities and class names.
