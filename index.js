@@ -199,7 +199,7 @@ async function predict(imgElements, sf) {
         return
       } else {
         _results.push(item);
-        _results.push(k)
+        _keys.push(k)
       }
     });
     
