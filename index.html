@@ -94,11 +94,13 @@
     <div style="width:100px; position: absolute; left: 110px; top: 290px; border: 2px blue;">
       <canvas id="canvas-copy2"></canvas>
     </div>
-    <div style="width:226px; height:20px; overflow: overflow-wrap; position: absolute; left: 0px; top: 402px; border: 2px green; background-color: green; font-size: 9pt; padding: 2px;">
-      <span style="color: white">Bbox: locations, areas and overlap ratios</span>
-    </div>
-    <div style="width:226px; height:20px; overflow: overflow-wrap; position: absolute; left: 0px; top: 424px; border: 2px grey; background-color: grey; font-size: 9pt; padding: 2px;">
-      <span style="color: white">Contextual embedding (recurrent state)</span>
+    <div style="width:226px; height:40px; position: absolute; left: 0px; top: 402px; ">
+      <div style="width:226px; height:20px; border: 2px green; background-color: green; font-size: 9pt; padding: 2px; overflow: overflow-wrap; ">
+        <span style="color: white">Bbox: locations, areas and overlap ratios</span>
+      </div>
+      <div style="width:226px; height:20px; border: 2px grey; background-color: grey; font-size: 9pt; padding: 2px; overflow: overflow-wrap; ">
+        <span style="color: white">Contextual embedding (recurrent state)</span>
+      </div>
     </div>
     <div style="width:300px; position: absolute; right: 0px; top:0px; font-size:8pt">
       <div id="predictions">Processing ...</div>
@@ -283,6 +285,7 @@
           ctx0.clearRect(0,0,$('canvas0').el.width,$('canvas0').el.height);
           ctx0.drawImage(image, 0, 0, image.width, image.height, 0, 0, IMG_SIZE, IMG_SIZE);
           refreshConvas(image, objs, [$('canvas-copy1').el, $('canvas-copy2').el], 'canvas-copy', 100);
+          
         }
       }, false);
 
