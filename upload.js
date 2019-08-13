@@ -15,57 +15,6 @@ let mousex = 0;
 let mousey = 0;
 let mousedown = false;
 
-//Mousedown
-$('canvas').el.addEventListener('mousedown', function(e) {
-	last_mousex = parseInt(e.clientX-canvasx);
-	last_mousey = parseInt(e.clientY-canvasy);
-	mousedown = true;
-}, false);
-
-//Mouseup
-$('canvas').el.addEventListener('mouseup', function(e) {
-	let width = mousex-last_mousex;
-	let height = mousey-last_mousey;
-
-	if (objs.length >= 2) {
-		objs = [];
-		objsConvas.forEach(function(el){
-			 el.parentElement.style.display = "none";
-		})
-		$('generate_btn').el.style.display = "none";
-	}
-	objs.push([last_mousex,last_mousey,width,height]);
-	//Variables
-	mousedown = false;
-	refreshConvas(image, objs, objsConvas);
-	if (objs.length == 2) {
-		$('generate_btn').el.style.display = "inline-block";
-		let ctx0 = $('canvas0').el.getContext('2d');
-		ctx0.clearRect(0,0,$('canvas0').el.width,$('canvas0').el.height);
-		ctx0.drawImage(image, 0, 0, image.width, image.height, 0, 0, IMG_SIZE, IMG_SIZE);
-		refreshConvas(image, objs, [$('canvas-copy1').el, $('canvas-copy2').el], 'canvas-copy');
-	}
-}, false);
-
-//Mousemove
-$('canvas').el.addEventListener("mousemove", function(e) {
-	mousex = parseInt(e.clientX-canvasx);
-	mousey = parseInt(e.clientY-canvasy);
-	if(mousedown) {
-		let ctx = $('canvas').el.getContext('2d');
-		ctx.clearRect(0,0,canvas.width,canvas.height); //clear canvas
-		ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, dw, dh);
-		ctx.beginPath();
-		let width = mousex-last_mousex;
-		let height = mousey-last_mousey;
-		ctx.rect(last_mousex,last_mousey,width,height);
-		ctx.strokeStyle = 'black';
-		ctx.lineWidth = 10;
-		ctx.stroke();
-	}
-}, false);
-
-
 function image_processing(_file) {
 	image.src = _file.target.result;
 	image.onload = function() {
