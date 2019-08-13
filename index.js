@@ -333,6 +333,10 @@ function showResults(att_results) {
   const color_list = ["grey", "green", "red", "blue"];
   $('predictions').el.innerHTML = "";
   att_results.forEach((item, i) => {
+    if (i > 2) { // skip results more than 3
+      return
+    }
+    
     const seq = item['seq'];
     //console.log('logprob', logprob)
     let el = document.createElement('div');
