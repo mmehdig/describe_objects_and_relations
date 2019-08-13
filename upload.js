@@ -79,6 +79,11 @@ function refreshConvas(image, objs, objsConvas, target='canvas', obj_size=IMG_SI
 			ctx.strokeStyle = colors[index];
 			ctx.lineWidth = 3;
 			ctx.stroke();
+		} else {
+			objsConvas[index].parentElement.style.top = dh + 10;
 		}
 	});
+	if (obj_size != IMG_SIZE) {
+		objsConvas[1].parentElement.nextElementSibling.style.top = dh + 10 + 101;
+	}
 }
