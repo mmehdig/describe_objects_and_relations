@@ -7,8 +7,8 @@ let colors = ['red', 'blue'];
 let IMG_SIZE = 224;
 
 // set variables for track mouse moves:
-let canvasx = $('canvas').el.getBoundingClientRect().left;
-let canvasy = $('canvas').el.getBoundingClientRect().top;
+let canvasx;
+let canvasy;
 let last_mousex = 0;
 let last_mousey = 0;
 let mousex = 0;
@@ -92,6 +92,9 @@ function image_processing(_file) {
 		$('canvas').el.width = dw;
 		$('canvas').el.height = dh;
 		refreshConvas(image, objs, objsConvas);
+		
+		canvasx = $('canvas').el.getBoundingClientRect().left;
+		canvasy = $('canvas').el.getBoundingClientRect().top;
 	}
 }
 
