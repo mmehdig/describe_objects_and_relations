@@ -84,6 +84,6 @@ function refreshConvas(image, objs, objsConvas, target='canvas', obj_size=IMG_SI
 		}
 	});
 	if (obj_size != IMG_SIZE) {
-		objsConvas[1].parentElement.nextElementSibling.style.top = dh + 10 + 101;
+		objsConvas[1].parentElement.nextElementSibling.style.top = dh + 10 + 110;
 	}
 }
