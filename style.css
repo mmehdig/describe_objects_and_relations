@@ -11,15 +11,15 @@ h3 {
 	margin: 10px 0;
 }
 .error{ color: #B71C1C; }
-#canvas {
+#canvas, #canvas-copy {
     cursor: crosshair;
-    border: 1px solid #666666;
+    border: 2px solid grey;
 }
-#canvas1 {
-    border: 3px solid red;
+#canvas1, #canvas-copy1 {
+    border: 2px solid red;
 }
-#canvas2 {
-    border: 3px solid blue;
+#canvas2, #canvas-copy2 {
+    border: 2px solid blue;
 }
 .page {
 	margin: auto;
