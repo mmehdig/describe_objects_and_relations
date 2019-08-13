@@ -276,7 +276,7 @@
           let ctx0 = $('canvas0').el.getContext('2d');
           ctx0.clearRect(0,0,$('canvas0').el.width,$('canvas0').el.height);
           ctx0.drawImage(image, 0, 0, image.width, image.height, 0, 0, IMG_SIZE, IMG_SIZE);
-          refreshConvas(image, objs, [$('canvas-copy1').el, $('canvas-copy2').el], 'canvas-copy');
+          refreshConvas(image, objs, [$('canvas-copy1').el, $('canvas-copy2').el], 'canvas-copy', 100);
         }
       }, false);
 
