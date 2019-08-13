@@ -220,7 +220,7 @@
       if ( file.type === 'image/png' || file.type === 'image/jpg' || file.type === 'image/jpeg' || file.type === 'image/gif' || file.type === 'image/bmp' ){
         var reader = new FileReader();
         reader.readAsDataURL( file );
-        reader.onload = display_image; 
+        reader.onload = (_file) => { image.src = _file.target.result }; 
       } // END test if file.type === image
     }
     /**
