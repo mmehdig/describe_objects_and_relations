@@ -73,17 +73,15 @@ function refreshConvas(image, objs, objsConvas, target='canvas', obj_size=IMG_SI
 		octx.clearRect(0,0,objsConvas[index].width,objsConvas[index].height); //clear canvas
 		octx.drawImage(image, x * ratio, y * ratio, w * ratio, h * ratio, 0, 0, objsConvas[index].width, objsConvas[index].height);
 		
-		if (obj_size == IMG_SIZE) { // if it is not on final result
-			ctx.beginPath();
-			ctx.rect(x,y,w,h);
-			ctx.strokeStyle = colors[index];
-			ctx.lineWidth = 3;
-			ctx.stroke();
-		} else {
-			objsConvas[index].parentElement.style.top = dh + 10;
-		}
+		ctx.beginPath();
+		ctx.rect(x,y,w,h);
+		ctx.strokeStyle = colors[index];
+		ctx.lineWidth = 3;
+		ctx.stroke();
 	});
-	if (obj_size != IMG_SIZE) {
+	if (obj_size != IMG_SIZE) { // if it is visualisation of the final page
+		objsConvas[0].parentElement.style.top = dh + 10;
+		objsConvas[1].parentElement.style.top = dh + 10;
 		objsConvas[1].parentElement.nextElementSibling.style.top = dh + 10 + 110;
 	}
 }
