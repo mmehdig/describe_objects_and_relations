@@ -15,7 +15,7 @@ let mousex = 0;
 let mousey = 0;
 let mousedown = false;
 
-function image_processing(_file) {
+function display_image(_file) {
 	image.src = _file.target.result;
 	image.onload = function() {
 		// clear the object selection page
